@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
-
+public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -19,13 +18,33 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     public List<Employee> retrieveEmployees() {
-        List<Employee> employees = employeeRepository.findAll();
-        return employees;
+        try {
+            List<Employee> employees = employeeRepository.findAll();
+            return employees;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public Employee addEmployee(Employee employee) {
+        try {
+            Employee rv = this.employeeRepository.save(employee);
+            return rv;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     public Employee getEmployee(Long employeeId) {
-        Optional<Employee> optEmp = employeeRepository.findById(employeeId);
-        return optEmp.get();
+        try {
+            Optional<Employee> optEmp = employeeRepository.findById(employeeId);
+            return optEmp.get();
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     public void saveEmployee(Employee employee){

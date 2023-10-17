@@ -1,3 +1,17 @@
+### Notes
+
+I did some minor improvements like adding a API key and one unit test,
+the "admin" token and the employee token can both be used to access
+the rest api, but the "admin" token have more control.
+
+If this was a proper project I would have added
+- SQL database for the admin tokens with encryption and hash+salt
+- SQL databases for employee data with extra protection
+- Added more unit tests and more complex testing
+- Nginx cache as front end for this API
+- A more intuitive way to interact with the API if needed
+- Certificate for the API with HTTPS
+
 ### How to use this spring-boot project
 
 - Install packages with `mvn package`
